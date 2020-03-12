@@ -1,0 +1,25 @@
+HA$PBExportHeader$f_fileread.srf
+$PBExportComments$Executa fileread em arquivos maiores que 32k
+global type f_fileread from function_object
+end type
+
+forward prototypes
+global function string f_fileread (string ps_caminho)
+end prototypes
+
+global function string f_fileread (string ps_caminho);//Executa fileRead em arquivos maiores que 32k
+Long ll_tamanho, ll_loops, ll_file, i
+String ls_temp, ls_retorno
+
+ll_tamanho = FileLength(ps_caminho)
+ll_loops = Ceiling (ll_tamanho/32765)
+ll_file = fileOpen(ps_caminho, StreamMode!, Read!, LockReadWrite!)
+FOR i = 1 to ll_loops
+		FileRead(ll_file, ls_temp)
+		ls_retorno += ls_temp
+NEXT
+FileClose(ll_file)
+
+return ls_retorno
+end function
+

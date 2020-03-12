@@ -1,0 +1,8 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "int_cross_ws\\int_cross_ws.pbl" "";
+@end;
+@begin Objects
+ "int_cross_ws\\int_cross_ws_service.srx" "int_cross_ws\\int_cross_ws.pbl";
+ "int_cross_ws\\soapconnection.sru" "int_cross_ws\\int_cross_ws.pbl";
+@end;

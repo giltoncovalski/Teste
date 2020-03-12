@@ -1,0 +1,23 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "integradorcross.pbl" "";
+@end;
+@begin Objects
+ "versao.srd" "integradorcross.pbl";
+ "projeto.srj" "integradorcross.pbl";
+ "ds_scripts_versao.srd" "integradorcross.pbl";
+ "uo_intcross_timer.sru" "integradorcross.pbl";
+ "integradorcross.sra" "integradorcross.pbl";
+ "n_icontray_cross.sru" "integradorcross.pbl";
+ "integradorcross.srj" "integradorcross.pbl";
+ "w_integradorcross.srw" "integradorcross.pbl";
+ "ds_sessoes.srd" "integradorcross.pbl";
+ "w_popup_cross.srw" "integradorcross.pbl";
+ "ds_scripts_versao_100104.srd" "integradorcross.pbl";
+ "ds_scripts_versao_100113.srd" "integradorcross.pbl";
+ "ds_scripts_versao_210301.srd" "integradorcross.pbl";
+ "ds_scripts_versao_210302.srd" "integradorcross.pbl";
+ "ds_scripts_versao_100109.srd" "integradorcross.pbl";
+ "ds_scripts_versao_100128.srd" "integradorcross.pbl";
+ "ds_scripts_versao_100129.srd" "integradorcross.pbl";
+@end;

@@ -1,0 +1,34 @@
+HA$PBExportHeader$f_run.srf
+$PBExportComments$Fun$$HEX2$$e700e300$$ENDHEX$$o para executar o comando Run do OLE
+global type f_run from function_object
+end type
+
+forward prototypes
+global function integer f_run (string ps_comando, boolean pb_aguarda)
+end prototypes
+
+global function integer f_run (string ps_comando, boolean pb_aguarda);/*
+	Data: 17/09/2015 //
+	Programador: Rafael Mahl
+	
+	Melhor que o ShellExecute, esta fun$$HEX2$$e700e300$$ENDHEX$$o aguarda o retorno do comando DOS para prosseguir.
+	
+	Par$$HEX1$$e200$$ENDHEX$$metros: 
+		- string com o comando a ser executado
+		- valor booleano indicando se o sistema deve aguardar a execu$$HEX2$$e700e300$$ENDHEX$$o do comando.
+			True: espera
+			False: continua
+*/
+oleobject loo_comando
+long ll_retorno
+
+loo_comando = CREATE OleObject
+loo_comando.ConnectToNewObject( "WScript.Shell" )
+
+ll_retorno = loo_comando.Run(ps_comando, 0, pb_aguarda)
+
+destroy loo_comando
+
+return ll_retorno
+end function
+

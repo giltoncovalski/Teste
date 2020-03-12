@@ -1,0 +1,86 @@
+HA$PBExportHeader$ds_scripts_versao_100109.srd
+$PBExportComments$scriptversao
+$PBExportHeader$ds_scripts_versao_100109.srd
+$PBExportComments$armazena os scripts de atualiza$$HEX2$$e700e300$$ENDHEX$$o da base de dados, liberados com uma nova vers$$HEX1$$e300$$ENDHEX$$o.
+release 11.5;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=number updatewhereclause=no name=nr_script dbname="nr_script" )
+ column=(type=number updatewhereclause=no name=nr_seq dbname="nr_seq" )
+ column=(type=char(4000) updatewhereclause=no name=ds_script dbname="ds_script" )
+ )
+data( 
+1, 1, "ALTER TABLE infosaude.parametro_conexa ADD nr_intervalo_sinc NUMBER(3)", 
+2, 1, "COMMENT ON COLUMN infosaude.parametro_conexa.nr_intervalo_sinc is 'Intervalo de tempo (segundos) que o IntegradorCROSS.exe realizar$$HEX2$$e1002000$$ENDHEX$$a leitura no diret$$HEX1$$f300$$ENDHEX$$rio de arquivos recebidos.'", 
+3, 1, "INSERT INTO infosaude.MODULO_PROCESSO VALUES ('Agenda','AGMV025_R','Log Importa$$HEX2$$e700e300$$ENDHEX$$o Conexa para SX','CON','N')", 
+4, 1, "INSERT INTO grupo_acesso_processo (cd_modulo, cd_gr_acesso, cd_processo) VALUES('Agenda',1,'AGMV025_R')", 
+5, 1, "INSERT INTO funcionario_processo
+(cd_funcionario, cd_hospital, cd_modulo, cd_gr_acesso, cd_processo, id_inclusao, id_alteracao, id_exclusao, in_ativo)
+SELECT 'INFO', cd_hospital, 'Agenda', NULL, 'AGMV025_R', 'S', 'S', 'S', 'S'
+FROM hospital
+WHERE in_ativo = 'S'", 
+6, 1, "INSERT INTO funcionario_processo
+(cd_funcionario, cd_hospital, cd_modulo, cd_gr_acesso, cd_processo, id_inclusao, id_alteracao, id_exclusao, in_ativo)
+SELECT 'SUPER', cd_hospital, 'Agenda', NULL, 'AGMV025_R', 'S', 'S', 'S', 'S'
+FROM hospital
+WHERE in_ativo = 'S'", 
+7, 1, "INSERT INTO infosaude.MODULO_PROCESSO VALUES ('Agenda','AGMV025_T','Log Importa$$HEX2$$e700e300$$ENDHEX$$o Conexa para SX','IAE','N')", 
+8, 1, "INSERT INTO grupo_acesso_processo (cd_modulo, cd_gr_acesso, cd_processo) VALUES('Agenda',1,'AGMV025_T')", 
+9, 1, "INSERT INTO funcionario_processo
+(cd_funcionario, cd_hospital, cd_modulo, cd_gr_acesso, cd_processo, id_inclusao, id_alteracao, id_exclusao, in_ativo)
+SELECT 'INFO', cd_hospital, 'Agenda', NULL, 'AGMV025_T', 'S', 'S', 'S', 'S'
+FROM hospital
+WHERE in_ativo = 'S'", 
+10, 1, "INSERT INTO funcionario_processo
+(cd_funcionario, cd_hospital, cd_modulo, cd_gr_acesso, cd_processo, id_inclusao, id_alteracao, id_exclusao, in_ativo)
+SELECT 'SUPER', cd_hospital, 'Agenda', NULL, 'AGMV025_T', 'S', 'S', 'S', 'S'
+FROM hospital
+WHERE in_ativo = 'S'", 
+11, 1, "CREATE TABLE INFOSAUDE.LOG_IMPORTACAO_CONEXA
+(
+ID_LOG_IMPORTACAO_CONEXA     NUMBER(10)         NOT NULL,
+NM_ARQUIVO                   VARCHAR2(100 CHAR) NOT NULL,
+DATA_IMP                     DATE               NOT NULL,
+IN_TIPO                      CHAR(1 BYTE)       DEFAULT 'A' NOT NULL,
+QTD_LINHAS_LID               NUMBER(06)         NOT NULL,
+QTD_LINHAS_IMP               NUMBER(06)         NOT NULL,
+QTD_LINHAS_REJ               NUMBER(06)         NOT NULL,
+CD_FUNCIONARIO_INC           VARCHAR2(8 BYTE),
+CONSTRAINT CKC_IN_TIPO_LIC   CHECK (in_tipo in ('A','M')),
+CONSTRAINT PK_LOG_IMPORTACAO_CONEXA PRIMARY KEY (ID_LOG_IMPORTACAO_CONEXA)
+)", 
+12, 1, "CREATE PUBLIC SYNONYM LOG_IMPORTACAO_CONEXA FOR INFOSAUDE.LOG_IMPORTACAO_CONEXA", 
+13, 1, "GRANT DELETE, INSERT, SELECT, UPDATE ON  INFOSAUDE.LOG_IMPORTACAO_CONEXA TO ROLE_INFOSAUDE", 
+14, 1, "COMMENT ON TABLE INFOSAUDE.LOG_IMPORTACAO_CONEXA IS 'Tabela usada na Integracao entre CONEXA x SX.'", 
+15, 1, "COMMENT ON COLUMN INFOSAUDE.LOG_IMPORTACAO_CONEXA.ID_LOG_IMPORTACAO_CONEXA IS 'Identificador $$HEX1$$fa00$$ENDHEX$$nico da tabela. Ser$$HEX2$$e1002000$$ENDHEX$$alimentado por uma Sequence.'", 
+16, 1, "COMMENT ON COLUMN INFOSAUDE.LOG_IMPORTACAO_CONEXA.NM_ARQUIVO IS 'Guarda o Nome Externo do Arquivo a ser importado para o SX oriundo do Conexa.'", 
+17, 1, "COMMENT ON COLUMN INFOSAUDE.LOG_IMPORTACAO_CONEXA.DATA_IMP IS 'Data da Importa$$HEX2$$e700e300$$ENDHEX$$o para o SX.'", 
+18, 1, "COMMENT ON COLUMN INFOSAUDE.LOG_IMPORTACAO_CONEXA.QTD_LINHAS_LID IS 'Quantidade de linhas lidas do arquivo nessa data.'", 
+19, 1, "COMMENT ON COLUMN INFOSAUDE.LOG_IMPORTACAO_CONEXA.QTD_LINHAS_IMP IS 'Quantidade de linhas importadas do arquivo nessa data.'", 
+20, 1, "COMMENT ON COLUMN INFOSAUDE.LOG_IMPORTACAO_CONEXA.QTD_LINHAS_REJ IS 'Quantidade de linhas rejeitadas do arquivo nessa data.'", 
+21, 1, "COMMENT ON COLUMN INFOSAUDE.LOG_IMPORTACAO_CONEXA.IN_TIPO IS 'Indica o Tipo da Importa$$HEX2$$e700e300$$ENDHEX$$o, onde : <A>-Automatica (IntegradorConexa) <M>-Manual (tela de Gerenciamento do m$$HEX1$$f300$$ENDHEX$$dulo Agenda)'", 
+22, 1, "COMMENT ON COLUMN INFOSAUDE.LOG_IMPORTACAO_CONEXA.CD_FUNCIONARIO_INC IS 'Codigo do Funcionario que incluiu o registro.'", 
+23, 1, "CREATE SEQUENCE infosaude.SEQ_LOG_IMPORTACAO_CONEXA
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE
+NOCACHE
+ORDER", 
+24, 1, "Insert into INFOSAUDE.FUNCIONARIO
+(CD_FUNCIONARIO, CD_HOSPITAL, NM_FUNCIONARIO, SC_COGNOME, IN_ATIVO, IN_LOGIN, DS_EMAIL, IN_FUNC_COMPLEXO, NR_DDD_FONE, NR_FONE, NR_RAMAL_FONE, IN_ALERTA_FIM_VIGENCIA, IN_PERFIL_SUPER, NM_SETOR, NR_DDD_FAX, NR_FAX, NR_RAMAL_FAX, CD_HOSPITAL_ULT_LOGIN, CD_TP_PROF, IN_RECEBE_AVISO_EXPIRACAO, IN_ATENDE_TRANSF, SENHA, IN_SENHA_BLOQUEADO, DT_INI_VAL_USO_SENHA, NR_TENTATIVAS_SENHA, CD_GERENCIA, IN_EXCLUIR_AUDITORIA_SUS, IN_ALTERAR_APRES_BLOQUEADA, IN_RASTREAR_ATENDIMENTO)
+Values
+('INTCROSS', NULL, 'INTCROSS', 'INTCROSS', 'S',
+'S', NULL, 'N', NULL, NULL,
+NULL, 'N', 'N', NULL, NULL,
+NULL, NULL, NULL, NULL, 'N',
+'N', NULL, 'N', NULL, 0,
+NULL, 'N', 'N', 'N')", 
+ )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="498" format="[general]"  name=nr_script edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="526" y="8" height="76" width="498" format="[general]"  name=nr_seq edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="0" color="33554432" x="1042" y="8" height="76" width="498" format="[general]"  name=ds_script edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

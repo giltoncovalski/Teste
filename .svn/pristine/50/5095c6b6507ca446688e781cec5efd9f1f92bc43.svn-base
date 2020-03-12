@@ -1,0 +1,125 @@
+HA$PBExportHeader$integradorcross.sra
+$PBExportComments$Generated Application Object
+forward
+global type integradorcross from application
+end type
+global transaction sqlca
+global dynamicdescriptionarea sqlda
+global dynamicstagingarea sqlsa
+global error error
+global message message
+end forward
+
+global variables
+String gs_servername, gs_direxec
+Boolean gb_debug
+Long gl_count_desconexao = 0
+end variables
+
+global type integradorcross from application
+string appname = "integradorcross"
+end type
+global integradorcross integradorcross
+
+type prototypes
+Function ulong CreateMutex(ulong lpMutexAttributes, int bInitialOwner, Ref string lpName) Library "kernel32.dll" Alias For "CreateMutexW"
+
+Function ulong GetLastError() Library "kernel32.dll"
+end prototypes
+
+on integradorcross.create
+appname="integradorcross"
+message=create message
+sqlca=create transaction
+sqlda=create dynamicdescriptionarea
+sqlsa=create dynamicstagingarea
+error=create error
+end on
+
+on integradorcross.destroy
+destroy(sqlca)
+destroy(sqlda)
+destroy(sqlsa)
+destroy(error)
+destroy(message)
+end on
+
+event open;/* ch:89800 - Verifica o formato de data da maquina */
+date ld_data
+string ls_data
+ld_data = date('01/12/2000')
+ls_data = string(ld_data)
+if ls_data <> '01/12/2000' then 
+	messagebox('Aten$$HEX2$$e700e300$$ENDHEX$$o','As configura$$HEX2$$e700f500$$ENDHEX$$es regionais de seu computador n$$HEX1$$e300$$ENDHEX$$o s$$HEX1$$e300$$ENDHEX$$o adequadas a '&
+		+ 'execu$$HEX2$$e700e300$$ENDHEX$$o deste aplicativo (formato de data inv$$HEX1$$e100$$ENDHEX$$lido).')
+	halt close
+end if
+
+gb_debug = (profilestring('integradorcross.ini', 'Debug', 'Debug', '' ) = 'S')
+gs_direxec = profilestring('integradorcross.ini', 'WS', 'Caminho', '' )
+gs_servername = profilestring('integradorcross.ini', 'database', 'servername', '' )
+SQLCA.servername = gs_servername
+
+//Verifica novamente as configura$$HEX2$$e700f500$$ENDHEX$$es de acesso obrigat$$HEX1$$f300$$ENDHEX$$rias.
+if  (SQLCA.servername = '') then
+    MessageBox("Aten$$HEX2$$e700e300$$ENDHEX$$o", 'O servidor de banco de dados n$$HEX1$$e300$$ENDHEX$$o foi informado. A aplica$$HEX2$$e700e300$$ENDHEX$$o ser$$HEX2$$e1002000$$ENDHEX$$finalizada.', Exclamation!)
+    Halt Close
+end if
+
+DISCONNECT USING SQLCA;
+
+SQLCA.dbms = 'O90'
+SQLCA.servername = gs_servername
+SQLCA.DBParm = "CommitOnDisconnect='No',NLS_Charset='Local',DecimalSeparator=','"
+
+SQLCA.logid = 'SYBSA'
+SQLCA.LogPass	 = 'SYSLOGINS'
+
+CONNECT USING SQLCA;
+
+if SQLCA.SQLCODE <> 0 then
+	if SQLCA.SQLDBCode = 1017 then
+		SQLCA.LogPass	 = 'COLLABORATION'
+		
+		CONNECT USING SQLCA;
+		
+		if SQLCA.SQLCODE <> 0 then Halt Close
+	else
+		 Halt Close
+	end if
+end if
+
+//Determina se j$$HEX2$$e1002000$$ENDHEX$$existe uma aplica$$HEX2$$e700e300$$ENDHEX$$o rodando
+Ulong lul_mutex, lul_erro
+Boolean lb_prev
+String ls_appname
+Application la_app
+
+la_app = GetApplication()
+
+// Se est$$HEX2$$e1002000$$ENDHEX$$rodando a partir do PB, permite que seja duplicado
+/*If Handle(la_app) <> 0 then
+
+	//Cria o mutex. A chave $$HEX2$$e9002000$$ENDHEX$$o nome da aplica$$HEX2$$e700e300$$ENDHEX$$o
+	ls_appname = la_app.AppName
+	lul_mutex = CreateMutex(0, 0, ls_appname)
+	
+	//Erro 183 indica que o mutex j$$HEX2$$e1002000$$ENDHEX$$existe
+	lul_erro = GetLastError()
+	If lul_erro = 183 Then
+		messageBox( 'Aten$$HEX2$$e700e300$$ENDHEX$$o', 'O sistema IntegradorCROSS j$$HEX2$$e1002000$$ENDHEX$$est$$HEX2$$e1002000$$ENDHEX$$sendo executado em seu computador.' )
+		halt close
+	End If
+
+end if*/
+
+//GetCurrentDirectoryA(256, gs_direxec)
+//gs_direxec2 = GetCurrentDirectory()
+
+open(w_integradorcross)
+end event
+
+event close;rollback;
+disconnect;
+end event
+

@@ -1,0 +1,159 @@
+HA$PBExportHeader$d_integra_cross_nao_imp.srd
+$PBExportComments$DataStore - Gerenciamento da Integra$$HEX2$$e700e300$$ENDHEX$$o entre CROSS x SX (N$$HEX1$$e300$$ENDHEX$$o Importados)
+release 11.5;
+datawindow(units=0 timer_interval=0 color=81324524 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" )
+header(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=char(100) update=yes updatewhereclause=yes key=yes name=nm_arquivo dbname="conexa_nao_importados.ce_nm_arquivo" )
+ column=(type=datetime update=yes updatewhereclause=yes name=data_importacao dbname="conexa_nao_importados.ce_data_importacao" )
+ column=(type=char(1) update=yes updatewhereclause=yes key=yes name=id_tipo_arquivo dbname="conexa_nao_importados.ce_id_tipo_arquivo" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=id_tipo_registro dbname="conexa_nao_importados.ce_id_tipo_registro" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=cod_unidade_executante dbname="conexa_nao_importados.ce_cod_unidade_executante" )
+ column=(type=char(250) update=yes updatewhereclause=yes key=yes name=id_age_consulta_hor dbname="conexa_nao_importados.c_id_age_consulta_hor" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=id_age_exame_hor dbname="conexa_nao_importados.e_id_age_exame_hor" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=id_age_consulta dbname="conexa_nao_importados.c_id_age_consulta" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=id_age_exame dbname="conexa_nao_importados.e_id_age_exame" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=id_especialidade dbname="conexa_nao_importados.ce_id_especialidade" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=nome_especialidade dbname="conexa_nao_importados.ce_nome_especialidade" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=cod_dia dbname="conexa_nao_importados.ce_cod_dia" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=data_agenda dbname="conexa_nao_importados.ce_data_agenda" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=hor_ini dbname="conexa_nao_importados.ce_hor_ini" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=hor_fim dbname="conexa_nao_importados.ce_hor_fim" )
+ column=(type=datetime update=yes updatewhereclause=yes name=data_hora_agenda dbname="conexa_nao_importados.ce_data_hora_agenda" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=tipo dbname="conexa_nao_importados.ce_tipo" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=id_motivo dbname="conexa_nao_importados.ce_id_motivo" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=id_profissional dbname="conexa_nao_importados.ce_id_profissional" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=doc_profissional dbname="conexa_nao_importados.ce_doc_profissional" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=origem dbname="conexa_nao_importados.ce_origem" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=nome_profissional dbname="conexa_nao_importados.ce_nome_profissional" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=id_protocolo dbname="conexa_nao_importados.c_id_protocolo" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=cod_protocolo dbname="conexa_nao_importados.c_cod_protocolo" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=subcateg dbname="conexa_nao_importados.c_subcateg" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=nome_protocolo dbname="conexa_nao_importados.c_nome_protocolo" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=cod_unidade_solicitante dbname="conexa_nao_importados.ce_cod_unidade_solicitante" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=nome_unidade_solicitante dbname="conexa_nao_importados.ce_nome_unidade_solicitante" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=cnes_unidade_solicitante dbname="conexa_nao_importados.ce_cnes_unidade_solicitante" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=nome_usuario_solicitante dbname="conexa_nao_importados.ce_nome_usuario_solicitante" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=dt_ultima_atualiz dbname="conexa_nao_importados.ce_dt_ultima_atualiz" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=cod_paciente dbname="conexa_nao_importados.ce_cod_paciente" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=nome_paciente dbname="conexa_nao_importados.ce_nome_paciente" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=sexo dbname="conexa_nao_importados.ce_sexo" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=dt_nascimento dbname="conexa_nao_importados.ce_dt_nascimento" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=rg dbname="conexa_nao_importados.ce_rg" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=cpf dbname="conexa_nao_importados.ce_cpf" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=nome_mae dbname="conexa_nao_importados.ce_nome_mae" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=nome_pai dbname="conexa_nao_importados.ce_nome_pai" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=endereco dbname="conexa_nao_importados.ce_endereco" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=endereco_numero dbname="conexa_nao_importados.ce_endereco_numero" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=bairro dbname="conexa_nao_importados.ce_bairro" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=municipio dbname="conexa_nao_importados.ce_municipio" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=uf dbname="conexa_nao_importados.ce_uf" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=cep dbname="conexa_nao_importados.ce_cep" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=tel_res_ddd dbname="conexa_nao_importados.ce_tel_res_ddd" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=tel_res dbname="conexa_nao_importados.ce_tel_res" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=tel_celular_ddd dbname="conexa_nao_importados.ce_tel_celular_ddd" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=tel_celular dbname="conexa_nao_importados.ce_tel_celular" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=tel_com_ddd dbname="conexa_nao_importados.ce_tel_com_ddd" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=tel_com dbname="conexa_nao_importados.ce_tel_com" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=tel_com_ramal dbname="conexa_nao_importados.ce_tel_com_ramal" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=email dbname="conexa_nao_importados.ce_email" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=contato_nome dbname="conexa_nao_importados.ce_contato_nome" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=contato_tel_ddd dbname="conexa_nao_importados.ce_contato_tel_ddd" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=contato_tel dbname="conexa_nao_importados.ce_contato_tel" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=num_cns dbname="conexa_nao_importados.ce_num_cns" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=num_prontuario dbname="conexa_nao_importados.ce_num_prontuario" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=id_age_consulta_hor_origem dbname="conexa_nao_importados.c_id_age_consulta_hor_origem" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=id_age_exame_hor_origem dbname="conexa_nao_importados.e_id_age_exame_hor_origem" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=age_exame_nome dbname="conexa_nao_importados.e_age_exame_nome" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=id_associacao dbname="conexa_nao_importados.e_id_associacao" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=nome_associacao dbname="conexa_nao_importados.e_nome_associacao" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=id_exame dbname="conexa_nao_importados.e_id_exame" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=cod_exame dbname="conexa_nao_importados.e_cod_exame" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=nome_exame dbname="conexa_nao_importados.e_nome_exame" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=tipo_tabela dbname="conexa_nao_importados.e_tipo_tabela" )
+ column=(type=number updatewhereclause=yes name=nr_linha_original dbname="conexa_nao_importados.nr_linha_original" )
+ retrieve="SELECT
+CE_NM_ARQUIVO,
+  CE_DATA_IMPORTACAO,
+  CE_ID_TIPO_ARQUIVO,
+  CE_ID_TIPO_REGISTRO,
+  CE_COD_UNIDADE_EXECUTANTE,
+  C_ID_AGE_CONSULTA_HOR,
+  E_ID_AGE_EXAME_HOR,
+  C_ID_AGE_CONSULTA,
+  E_ID_AGE_EXAME,
+  CE_ID_ESPECIALIDADE,
+  CE_NOME_ESPECIALIDADE,
+  CE_COD_DIA,
+  CE_DATA_AGENDA,
+  CE_HOR_INI,
+  CE_HOR_FIM,
+  CE_DATA_HORA_AGENDA,
+  CE_TIPO,
+  CE_ID_MOTIVO,
+  CE_ID_PROFISSIONAL,
+  CE_DOC_PROFISSIONAL,
+  CE_ORIGEM,
+  CE_NOME_PROFISSIONAL,
+  C_ID_PROTOCOLO,
+  C_COD_PROTOCOLO,
+  C_SUBCATEG,
+  C_NOME_PROTOCOLO,
+  CE_COD_UNIDADE_SOLICITANTE,
+  CE_NOME_UNIDADE_SOLICITANTE,
+  CE_CNES_UNIDADE_SOLICITANTE,
+  CE_NOME_USUARIO_SOLICITANTE,
+  CE_DT_ULTIMA_ATUALIZ,
+  CE_COD_PACIENTE,
+  CE_NOME_PACIENTE,
+  CE_SEXO,
+  CE_DT_NASCIMENTO,
+  CE_RG,
+  CE_CPF,
+  CE_NOME_MAE,
+  CE_NOME_PAI,
+  CE_ENDERECO,
+  CE_ENDERECO_NUMERO,
+  CE_BAIRRO,
+  CE_MUNICIPIO,
+  CE_UF,
+  CE_CEP,
+  CE_TEL_RES_DDD,
+  CE_TEL_RES,
+  CE_TEL_CELULAR_DDD,
+  CE_TEL_CELULAR,
+  CE_TEL_COM_DDD,
+  CE_TEL_COM,
+  CE_TEL_COM_RAMAL,
+  CE_EMAIL,
+  CE_CONTATO_NOME,
+  CE_CONTATO_TEL_DDD,
+  CE_CONTATO_TEL,
+  CE_NUM_CNS,
+  CE_NUM_PRONTUARIO,
+  C_ID_AGE_CONSULTA_HOR_ORIGEM,
+  E_ID_AGE_EXAME_HOR_ORIGEM,
+  E_AGE_EXAME_NOME,
+  E_ID_ASSOCIACAO,
+  E_NOME_ASSOCIACAO,
+  E_ID_EXAME,
+  E_COD_EXAME,
+  E_NOME_EXAME,
+  E_TIPO_TABELA,
+	0 as nr_linha_original
+FROM CONEXA_NAO_IMPORTADOS
+WHERE ( ce_data_hora_agenda >= :pdt_atual OR CE_ID_TIPO_REGISTRO = 'C')
+AND ( ce_nm_arquivo = :ps_nm_arquivo or :ps_nm_arquivo = '0')" update="CONEXA_NAO_IMPORTADOS" updatewhere=0 updatekeyinplace=yes arguments=(("pdt_atual", datetime),("ps_nm_arquivo", string)) )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

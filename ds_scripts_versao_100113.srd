@@ -1,0 +1,29 @@
+HA$PBExportHeader$ds_scripts_versao_100113.srd
+$PBExportComments$scriptversao
+$PBExportHeader$ds_scripts_versao_100113.srd
+$PBExportComments$armazena os scripts de atualiza$$HEX2$$e700e300$$ENDHEX$$o da base de dados, liberados com uma nova vers$$HEX1$$e300$$ENDHEX$$o.
+release 11.5;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=number updatewhereclause=no name=nr_script dbname="nr_script" )
+ column=(type=number updatewhereclause=no name=nr_seq dbname="nr_seq" )
+ column=(type=char(4000) updatewhereclause=no name=ds_script dbname="ds_script" )
+ )
+data( 
+1, 1, "ALTER TABLE INFOSAUDE.PARAMETRO_CONEXA ADD IN_IMP_FONE_CAD_PACIENTE CHAR(1 BYTE) DEFAULT 'S' NOT NULL", 
+2, 1, "COMMENT ON COLUMN INFOSAUDE.PARAMETRO_CONEXA.IN_IMP_FONE_CAD_PACIENTE IS 'Indica se deve atualizar na tabela paciente o telefone'", 
+3, 1, "ALTER TABLE INFOSAUDE.PARAMETRO_CONEXA ADD (
+CONSTRAINT CKC_IN_IMP_FONE_CAD_PAC
+CHECK (IN_IMP_FONE_CAD_PACIENTE IN ('S','N')))", 
+4, 1, "ALTER TABLE INFOSAUDE.COMPROMISSO ADD NM_CONTATO VARCHAR2(45 BYTE)", 
+5, 1, "COMMENT ON COLUMN INFOSAUDE.COMPROMISSO.NM_CONTATO IS 'Nome para o contato'", 
+6, 1, "ALTER TABLE INFOSAUDE.HIST_COMPROMISSO ADD NM_CONTATO VARCHAR2(45 BYTE)", 
+7, 1, "COMMENT ON COLUMN INFOSAUDE.HIST_COMPROMISSO.NM_CONTATO IS 'Nome para o contato'", 
+ )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="498" format="[general]"  name=nr_script edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="526" y="8" height="76" width="498" format="[general]"  name=nr_seq edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="0" color="33554432" x="1042" y="8" height="76" width="498" format="[general]"  name=ds_script edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

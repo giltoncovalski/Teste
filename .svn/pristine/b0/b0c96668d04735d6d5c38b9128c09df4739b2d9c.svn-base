@@ -1,0 +1,62 @@
+HA$PBExportHeader$ds_scripts_versao_100129.srd
+$PBExportComments$scriptversao
+$PBExportHeader$ds_scripts_versao_100129.srd
+$PBExportComments$armazena os scripts de atualiza$$HEX2$$e700e300$$ENDHEX$$o da base de dados, liberados com uma nova vers$$HEX1$$e300$$ENDHEX$$o.
+release 11.5;
+datawindow(units=0 timer_interval=0 color=81324524 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=number updatewhereclause=no name=nr_script dbname="nr_script" )
+ column=(type=number updatewhereclause=no name=nr_seq dbname="nr_seq" )
+ column=(type=char(4000) updatewhereclause=no name=ds_script dbname="ds_script" )
+ )
+data( 
+1, 1, "ALTER TABLE INFOSAUDE.PARAMETRO_CONEXA ADD (IN_INT_CROSS CHAR(1) DEFAULT 'N' NOT NULL)", 
+2, 1, "ALTER TABLE INFOSAUDE.PARAMETRO_CONEXA
+ADD CONSTRAINT CHK_IN_INT_CROSS CHECK
+(IN_INT_CROSS IN ('S','N'))", 
+3, 1, "COMMENT ON COLUMN INFOSAUDE.PARAMETRO_CONEXA.IN_INT_CROSS IS 'Indica se a integracao com o sistema Cross sera realizada automaticamente'", 
+4, 1, "ALTER TABLE INFOSAUDE.PARAMETRO_CONEXA
+ADD (QTD_REG_INT NUMBER(4) DEFAULT 100 NOT NULL)", 
+5, 1, "ALTER TABLE INFOSAUDE.PARAMETRO_CONEXA
+ADD (DS_MSG_RET_POS VARCHAR2(50) DEFAULT 'Registro efetuado com sucesso.' NOT NULL)", 
+6, 1, "ALTER TABLE INFOSAUDE.PARAMETRO_CONEXA
+ADD (DT_PARAM_RETORNO DATE )", 
+7, 1, "COMMENT ON COLUMN INFOSAUDE.PARAMETRO_CONEXA.DT_PARAM_RETORNO IS 'Data de parametrizacao dos retornos para o webservice Cross'", 
+8, 1, "COMMENT ON COLUMN INFOSAUDE.PARAMETRO_CONEXA.QTD_REG_INT IS 'Quantidade de registros a serem integrados por requisicao junto ao CROSS'", 
+9, 1, "COMMENT ON COLUMN INFOSAUDE.PARAMETRO_CONEXA.DS_MSG_RET_POS IS 'Retorno de sucesso utilizado pelo ws do Cross, onde o valor eh estatico.'", 
+10, 1, "ALTER TABLE INFOSAUDE.HIST_COMPROMISSO
+ADD (ID_AGE_CONSULTA_HOR NUMBER(11) )", 
+11, 1, "COMMENT ON COLUMN INFOSAUDE.HIST_COMPROMISSO.ID_AGE_CONSULTA_HOR IS 'Indica o codigo do agendamento do Conexa'", 
+12, 1, "CREATE TABLE INFOSAUDE.REP_CROSS
+(
+SEQ            NUMBER (10) NOT NULL ,
+CD_RECURSO     NUMBER (10) NOT NULL ,
+SQ_COMPROMISSO NUMBER (10) NOT NULL ,
+ID_STATUS_INT CHAR(1 BYTE) ,
+DS_RETORNO     VARCHAR2 (50) ,
+	DT_INCLUSAO DATE DEFAULT SYSDATE NOT NULL
+)", 
+13, 1, "ALTER TABLE INFOSAUDE.REP_CROSS ADD CONSTRAINT PK_SINC_CROSS PRIMARY KEY ( SEQ )", 
+14, 1, "CREATE SEQUENCE INFOSAUDE.REP_CROSS_SEQ1 INCREMENT BY 1 MAXVALUE 999999999 MINVALUE 1 CACHE 2", 
+15, 1, "CREATE PUBLIC SYNONYM REP_CROSS  FOR INFOSAUDE.REP_CROSS", 
+16, 1, "CREATE PUBLIC SYNONYM REP_CROSS_SEQ1 FOR INFOSAUDE.REP_CROSS_SEQ1", 
+17, 1, "ALTER TABLE INFOSAUDE.REP_CROSS ADD CONSTRAINT FK_REP_CROSS_COMPROMISSO FOREIGN KEY ( CD_RECURSO, SQ_COMPROMISSO ) REFERENCES INFOSAUDE.COMPROMISSO ( CD_RECURSO, SQ_COMPROMISSO )", 
+18, 1, "ALTER TABLE INFOSAUDE.REP_CROSS
+ADD CONSTRAINT CHK_ID_STATUS_INT CHECK
+(ID_STATUS_INT IN ('E','I'))", 
+19, 1, "COMMENT ON COLUMN INFOSAUDE.REP_CROSS.SEQ IS 'SEQUENCE DA TABELA'", 
+20, 1, "COMMENT ON COLUMN INFOSAUDE.REP_CROSS.CD_RECURSO IS 'CODIGO DO RECURSO'", 
+21, 1, "COMMENT ON COLUMN INFOSAUDE.REP_CROSS.SQ_COMPROMISSO IS 'CODIGO DO COMPROMISSO'", 
+22, 1, "COMMENT ON COLUMN INFOSAUDE.REP_CROSS.ID_STATUS_INT IS 'STATUS DA INTEGRACAO. I -> INTEGRADO. E -> ERRO'", 
+23, 1, "COMMENT ON COLUMN INFOSAUDE.REP_CROSS.DS_RETORNO IS 'RETORNO DO WEB SERVICE DO CROSS'", 
+24, 1, "GRANT DELETE, INSERT, SELECT, UPDATE ON INFOSAUDE.REP_CROSS TO ROLE_INFOSAUDE", 
+25, 1, "CREATE INDEX INFOSAUDE.IX_COMP_CROSS ON INFOSAUDE.COMPROMISSO (DT_COMPROMISSO, CD_PACIENTE_CONEXA,  ID_AGE_CONSULTA_HOR, CD_RECURSO, SQ_COMPROMISSO)", 
+26, 1, "CREATE INDEX INFOSAUDE.IX_REP_CROSS_01 ON INFOSAUDE.REP_CROSS (CD_RECURSO, SQ_COMPROMISSO)", 
+ )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="8" height="76" width="498" format="[general]"  name=nr_script edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="526" y="8" height="76" width="498" format="[general]"  name=nr_seq edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="0" color="33554432" x="1042" y="8" height="76" width="498" format="[general]"  name=ds_script edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" )

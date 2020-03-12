@@ -1,0 +1,22 @@
+HA$PBExportHeader$int_cross_ws_service.srx
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type int_cross_ws_Service from NonVisualObject
+end type
+
+type variables
+Protected:
+        string pbws_ver = ".NET"
+        string cs_namespace = "WebService"
+        string cs_class = "Service"
+        string cs_assembly = "int_cross_ws.dll"
+        string pb_prefix = "int_cross_ws_"
+        string pb_usenvo = "YES"
+        string pb_target = "D:\@chamados\82707\integradorcross_v1.001.23"
+end variables
+
+forward prototypes
+public:
+function string Recepcao(  string Usuario,  string Senha,  string Tipo,  string CodUnidadeExec,  string CodigoAgendamento,  string CodigoPaciente,  string Status,  string Alta,  string Falta_Medica,  string NomeUnidade,  string NomeUsuarioAcao,  string DtAtualizacao,  string NumeroProntuario,  string CodigoMotivo,  string CodUnidadeOrigem) alias for "<method name='Recepcao' ns='WebService' pbname='Recepcao'><return name='returnvalue' type='System.String' isRef='False' ArrayDim='0' IsNullableType='False' /><param name='Usuario' type='System.String' pos='0' dir='in' ArrayDim='0' IsNullableType='False'/><param name='Senha' type='System.String' pos='1' dir='in' ArrayDim='0' IsNullableType='False'/><param name='Tipo' type='System.String' pos='2' dir='in' ArrayDim='0' IsNullableType='False'/><param name='CodUnidadeExec' type='System.String' pos='3' dir='in' ArrayDim='0' IsNullableType='False'/><param name='CodigoAgendamento' type='System.String' pos='4' dir='in' ArrayDim='0' IsNullableType='False'/><param name='CodigoPaciente' type='System.String' pos='5' dir='in' ArrayDim='0' IsNullableType='False'/><param name='Status' type='System.String' pos='6' dir='in' ArrayDim='0' IsNullableType='False'/><param name='Alta' type='System.String' pos='7' dir='in' ArrayDim='0' IsNullableType='False'/><param name='Falta_Medica' type='System.String' pos='8' dir='in' ArrayDim='0' IsNullableType='False'/><param name='NomeUnidade' type='System.String' pos='9' dir='in' ArrayDim='0' IsNullableType='False'/><param name='NomeUsuarioAcao' type='System.String' pos='10' dir='in' ArrayDim='0' IsNullableType='False'/><param name='DtAtualizacao' type='System.String' pos='11' dir='in' ArrayDim='0' IsNullableType='False'/><param name='NumeroProntuario' type='System.String' pos='12' dir='in' ArrayDim='0' IsNullableType='False'/><param name='CodigoMotivo' type='System.String' pos='13' dir='in' ArrayDim='0' IsNullableType='False'/><param name='CodUnidadeOrigem' type='System.String' pos='14' dir='in' ArrayDim='0' IsNullableType='False'/></method>"
+subroutine CancelAsync (  any userState) alias for "<method name='CancelAsync' ns='WebService' pbname='CancelAsync'><param name='userState' type='System.Object' pos='0' dir='in' ArrayDim='0' IsNullableType='False'/></method>"
+end prototypes
+
